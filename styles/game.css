@@ -13,7 +13,7 @@ html, body, div {
 .boardgame {
   margin: 0 auto;
   padding: 0 0 3vw;
-  max-width: 60%;  
+  max-width: 50%;  
 }
 
 .scores {
@@ -44,13 +44,22 @@ h1 {
   justify-content: space-between;   
 }
 .cell {
-  width: 12%;
+  width: 14%;
   padding: 5px;
   height: 150px;
   border:3px solid rgb(48, 28, 28);
   border-radius: 2px;
   text-align: center;
+  /*cursor: pointer;*/
 }
-.cell:hover {
-  background-color: cornflowerblue;
+.active {
+  background-color: cornflowerblue;  
+}
+.checked {
+  background-color: rgb(99, 241, 99);
+  transition-delay: 1s;
+}
+.fail {
+  background-color:rgba(249, 0, 0, 0.38);
+  transition-delay: 1s;
 }
