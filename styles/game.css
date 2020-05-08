@@ -66,3 +66,40 @@ h1 {
   background-color:rgba(249, 0, 0, 0.38);
   transition-delay: 1s;
 }
+/*** CSS CARDS ***/
+.seahorse {
+  background-image: url(../assets/images/seahorse.png);
+  background-repeat: no-repeat;
+}
+.octopus {
+   background-image: url(../assets/images/octopus2.png);
+   background-repeat: no-repeat;
+}
+.shark {
+  background-image: url(../assets/images/shark.png);
+  background-repeat: no-repeat;
+}
+.whale {
+  background-image: url(../assets/images/whale.png);
+  background-repeat: no-repeat;
+}
+.squid {
+  background-image: url(../assets/images/squid.png);
+  background-repeat: no-repeat;
+}
+.dolphin {
+  background-image: url(../assets/images/dolphin.png);
+  background-repeat: no-repeat;
+}
+.starfish {
+  background-image: url(../assets/images/starfish.png);
+  background-repeat: no-repeat;
+}
+.seal {
+  background-image: url(../assets/images/seal.png);
+  background-repeat: no-repeat;
+}
+.crab {
+  background-image: url(../assets/images/crab.png);
+  background-repeat: no-repeat;
+}

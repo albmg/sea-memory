@@ -1,5 +1,5 @@
-var animals = ["whale", "whale", "dolphin", "dolphin", "starfish", "starfish", "shark", "shark", "jellyfish",
-    "jellyfish", "squid", "squid", "octopus", "octopus", "fish", "fish", "sea turtle", "sea turtle"]
+var animals = ["whale", "whale", "dolphin", "dolphin", "starfish", "starfish", "shark", "shark", "seal",
+  "seal", "squid", "squid", "octopus", "octopus", "crab", "crab", "seahorse", "seahorse"]
 
 function shuffle(array) {
   var m = array.length, t, i;
@@ -22,7 +22,9 @@ const cells = document.getElementsByClassName('cell');
 function paintCards () {
   //selectCell();  
   for (var i = 0; i < cells.length; i++) {
-    cells[i].innerText = animalsShuffle[i];       
+    let animal = animalsShuffle[i];
+    cells[i].innerText = animal;
+    cells[i].classList.add(animal);
     cells[i].onclick = storeCell;    
   }
 }
