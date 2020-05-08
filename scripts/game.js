@@ -44,7 +44,7 @@ function storeCell (e) {
       var checkingCard = document.getElementsByClassName("active");
       for (var i = 0; i < checkingCard.length; i++) {
         if (checkCards[0] === checkCards[1]) {     
-          checkingCard[i].classList.add("checked");
+          checkingCard[i].classList.add("checked");                   
           checkCards = [];
           //console.log(checkCards.length);                    
         } 
@@ -74,10 +74,31 @@ function storeCell (e) {
       break;
     default:
       //storeCell();
-  }
-  
-  
-  
+  }  
 }
 
-paintCards();
+var playerOneName = document.querySelectorAll(".player-one-name");
+var playerOneNick = document.querySelectorAll(".player-one");
+var playerTwoName = document.querySelectorAll(".player-two-name");
+var playerTwoNick = document.querySelectorAll(".player-two");
+document.addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    // code for enter
+    playerOneNick[0].innerText = playerOneName[0].value
+    playerTwoNick[0].innerText = playerTwoName[0].value    
+  }  
+});
+
+function gameInit (){
+  var playGame = document.querySelectorAll(".play-game")
+  playGame[0].onclick = paintCards;
+}
+
+/*function gameReset () {
+  var resetGame = document.querySelectorAll(".restart-game")
+  resetGame[0].onclick = window.location.reload(true);
+}*/
+
+gameInit();
+
+//paintCards();
