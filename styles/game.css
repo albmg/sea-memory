@@ -121,3 +121,44 @@ h1 {
   /*background-color:black;*/
   /*background-image: url(../assets/images/coral.png);  */
 }
+
+.p1, .p2, .play-game, .restart-game, .music, .sound-effects {
+  position: relative;  
+}
+.play-game, .restart-game, .music-on, .music-off, .se-on, .se-off {
+  padding:10px;
+}
+
+.p1 {  
+  top: -550px;
+  left: 900px;
+}
+
+.p2 {
+  top: -500px;
+  left: 660px;
+}
+
+.play-game {
+  top: -420px;
+  left: 500px;
+}
+
+.restart-game {
+  top: -350px;
+  left: 405px;
+}
+
+input {
+  margin-left:10px;
+}
+
+.music {
+  top:-280px;
+  left:255px;
+}
+.sound-effects {
+  top:-250px;
+  left:889px
+}
+button.music-on

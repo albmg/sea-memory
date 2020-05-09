@@ -31,21 +31,27 @@ function paintCards () {
   }
 }
 
+var players = ["p1", "p2"];
+
 function selectPlayers () {
-  var players = ["p1", "p2"];
   var pl1 = document.querySelector(".player-one");
   var p1 = pl1.innerText;
-    if (players.indexOf("p1")) {
+  var pl2 = document.querySelector(".player-one");
+  var p2 = pl2.innerText;
+  if (players.indexOf("p1")) {
       console.log(p1 + " es tu turno");
-      alert(`${p1} es tu turno`);
+      //alert(`${p1} es tu turno`);
     }
-  
+    else {
+      console.log(p2 + " es tu turno");
+      //alert(`${p2} es tu turno`);
+    }  
 }
 
 
 var checkCards = [];
 
-function storeCell (e) {    
+function storeCell (e) {      
   //console.log(e);
   selectPlayers();
   switch (checkCards.length){
@@ -80,14 +86,15 @@ function storeCell (e) {
         fails[i].classList.remove("fail");
         fails[i].classList.remove("active");
         fails[i].onclick = storeCell;
-      }
-      
+      }      
       cells.className = "";
+      //players.indexOf === 1;
       break;
     default:
       //storeCell();
   }  
 }
+
 function selectNick() {
   document.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
@@ -111,7 +118,7 @@ function gameInit (){
     }
   }*/
   var playGame = document.querySelectorAll(".play-game")
-  playGame[0].onclick = paintCards;
+  playGame[0].addEventListener("click", paintCards);
   var resetGame = document.querySelectorAll(".restart-game");
   resetGame[0].addEventListener("click", gameReset);
 }
