@@ -21,7 +21,7 @@ var animalsShuffle = shuffle(animals);
 
 const cells = document.getElementsByClassName('cell');
 
-function paintCards () {
+function printCards () {
   //selectCell();  
   for (var i = 0; i < cells.length; i++) {
     let animal = animalsShuffle[i];
@@ -29,6 +29,18 @@ function paintCards () {
     cells[i].classList.add(animal);
     cells[i].onclick = storeCell;    
   }
+}
+
+function printBoard () {
+  let board = document.querySelector(".board");
+
+  for (let i = 0; i < 3 * 6; i++) {
+    const div = document.createElement("div");
+    div.classList.add("cell");
+    //div.classList.add("aqua");
+    board.appendChild(div);
+  }
+  //paintCards();
 }
 
 var players = ["p1", "p2"];
@@ -106,6 +118,7 @@ function selectNick() {
 }
 
 function gameInit (){
+  printBoard();
   selectNick();    
   // function gameInit
   /*var board = document.querySelector(".board");
@@ -118,7 +131,7 @@ function gameInit (){
     }
   }*/
   var playGame = document.querySelectorAll(".play-game")
-  playGame[0].addEventListener("click", paintCards);
+  playGame[0].addEventListener("click", printCards);
   var resetGame = document.querySelectorAll(".restart-game");
   resetGame[0].addEventListener("click", gameReset);
 }
