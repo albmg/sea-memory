@@ -14,6 +14,8 @@ function shuffle(array) {
 }
 
 
+
+
 var animalsShuffle = shuffle(animals);
 
 
@@ -29,10 +31,23 @@ function paintCards () {
   }
 }
 
+function selectPlayers () {
+  var players = ["p1", "p2"];
+  var pl1 = document.querySelector(".player-one");
+  var p1 = pl1.innerText;
+    if (players.indexOf("p1")) {
+      console.log(p1 + " es tu turno");
+      alert(`${p1} es tu turno`);
+    }
+  
+}
+
+
 var checkCards = [];
 
-function storeCell (e) {
+function storeCell (e) {    
   //console.log(e);
+  selectPlayers();
   switch (checkCards.length){
     case 0: 
       e.target.classList.add("active");
@@ -54,19 +69,14 @@ function storeCell (e) {
         {  
           console.log(checkingCard[i]) 
           checkingCard[i].classList.add("fail");                   
-        }
-        //if (checkCards[0] !== checkCards[1] && checkingCard[i].classList.contains("fail")) {
-        //else {  
-         // checkCards = [];
-        //}
+        }        
       }
       console.log(checkCards.length);
       break;
     case 2:
       checkCards = [];
       var fails = document.querySelectorAll(".cell")
-      for (var i = 0; i < fails.length; i++) {
-        //console.log(fails[i]);
+      for (var i = 0; i < fails.length; i++) {        
         fails[i].classList.remove("fail");
         fails[i].classList.remove("active");
         fails[i].onclick = storeCell;
@@ -78,28 +88,37 @@ function storeCell (e) {
       //storeCell();
   }  
 }
-
-var playerOneName = document.querySelectorAll(".player-one-name");
-var playerOneNick = document.querySelectorAll(".player-one");
-var playerTwoName = document.querySelectorAll(".player-two-name");
-var playerTwoNick = document.querySelectorAll(".player-two");
-document.addEventListener('keypress', function (e) {
-  if (e.key === 'Enter') {
-    // code for enter
-    playerOneNick[0].innerText = playerOneName[0].value
-    playerTwoNick[0].innerText = playerTwoName[0].value    
-  }  
-});
-
-function gameInit (){
-  var playGame = document.querySelectorAll(".play-game")
-  playGame[0].onclick = paintCards;
+function selectNick() {
+  document.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      // code for enter
+      playerOneNick[0].innerText = playerOneName[0].value
+      playerTwoNick[0].innerText = playerTwoName[0].value
+    }
+  });
 }
 
-/*function gameReset () {
-  var resetGame = document.querySelectorAll(".restart-game")
-  resetGame[0].onclick = window.location.reload(true);
-}*/
+function gameInit (){
+  selectNick();    
+  // function gameInit
+  /*var board = document.querySelector(".board");
+  var div = document.createElement("div");
+  div.classList.add("cell");
+
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 6; j++) {
+      board.append(div)
+    }
+  }*/
+  var playGame = document.querySelectorAll(".play-game")
+  playGame[0].onclick = paintCards;
+  var resetGame = document.querySelectorAll(".restart-game");
+  resetGame[0].addEventListener("click", gameReset);
+}
+
+function gameReset () {
+  window.location.reload(true);
+}
 
 gameInit();
 
