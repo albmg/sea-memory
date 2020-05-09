@@ -37,6 +37,7 @@ function Dom() {
 
   this.layout = function () {
     let board = document.querySelector(".board");
+
     for (let i = 0; i < 3 * 6; i++) {
       const div = document.createElement("div");
       div.classList.add("cell");

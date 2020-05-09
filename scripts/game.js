@@ -16,8 +16,8 @@ function selectPlayers() {
 function nextPlayer(current) {
   let index =
     players.indexOf(current) === -1 ? 0 : players.indexOf(current) + 1;
-  currentPlayer = players[index];
-  console.log(currentPlayer);
+
+  currentPlayer = players[index] ? players[index] : players[0];
 }
 
 var checkCards = [];
