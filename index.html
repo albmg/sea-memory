@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sea Memory Game</title>
-    <link rel="stylesheet" href="./styles/game.css">
-</head>
-<body>
-  <div class="site-wrapper">    
-    <main id="site-main">          
-      <header><h1>Sea Memory</h1></header>
-      <section class="boardgame">
-        <div class="scores">
+    <link rel="stylesheet" href="./styles/game.css" />
+  </head>
+  <body>
+    <div class="site-wrapper">
+      <main id="site-main">
+        <header><h1>Sea Memory</h1></header>
+        <section class="boardgame">
+          <div class="scores">
             <div class="players">
               <h2 class="player-one">Player 1</h2>
               <div class="score-player">
@@ -23,10 +23,10 @@
               <div class="score-player">
                 <h2>Score :<span>0</span> Points</h2>
               </div>
-            </div>     
-        </div>
-        <div class="board">          
-            <div class="cell aqua"></div>
+            </div>
+          </div>
+          <div class="board">
+            <!-- <div class="cell aqua"></div>
             <div class="cell aqua"></div>
             <div class="cell aqua"></div>
             <div class="cell aqua"></div>
@@ -43,19 +43,28 @@
             <div class="cell aqua"></div>
             <div class="cell aqua"></div>                     
             <div class="cell aqua"></div>
-            <div class="cell aqua"></div>
-        </div>     
-        <div class="input-name">
-          <label>Player 1<input class="player-one-name" placeholder="Type your name"></label>
-          <button class="play-game">Play Game</button>
-          <button class="restart-game" href="#">Restart Game</button>
-          <label>Player 2<input class="player-two-name" placeholder="Type your name"></label>
-        </div>       
-      </section>         
-    </main>
-    <footer class=""></footer>
-  </div> 
-  <script src="./scripts/game.js"></script>
-  <script src="./scripts/dom.js"></script>
-</body>
+            <div class="cell aqua"></div> -->
+          </div>
+
+          <div class="input-name">
+            <label>
+              Player 1
+              <input class="player-one-name" placeholder="Type your name" />
+            </label>
+
+            <button class="play-game">Play Game</button>
+
+            <button class="restart-game" href="#">Restart Game</button>
+
+            <label>
+              Player 2
+              <input class="player-two-name" placeholder="Type your name" />
+            </label>
+          </div>
+        </section>
+      </main>
+      <footer class=""></footer>
+    </div>
+    <script type="module" src="./scripts/dom.js"></script>
+  </body>
 </html>
