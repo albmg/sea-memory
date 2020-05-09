@@ -55,6 +55,10 @@ h1 {
   text-align: center;
   /*cursor: pointer;*/
 }
+.cell:hover {
+  /*border:1px solid black;*/
+  box-shadow: inset 0px 0px 0px 5px rgb(114, 225, 253);
+}
 .active {
   background-color: cornflowerblue;  
 }
@@ -68,38 +72,42 @@ h1 {
 }
 /*** CSS CARDS ***/
 .seahorse {
-  background-image: url(../assets/images/seahorse.png);
-  background-repeat: no-repeat;
+  background-image: url(../assets/images/seahorse.png);  
 }
+
 .octopus {
-   background-image: url(../assets/images/octopus2.png);
-   background-repeat: no-repeat;
+  background-image: url(../assets/images/octopus2.png);  
 }
+
 .shark {
-  background-image: url(../assets/images/shark.png);
-  background-repeat: no-repeat;
+  background-image: url(../assets/images/shark.png);  
 }
 .whale {
-  background-image: url(../assets/images/whale.png);
-  background-repeat: no-repeat;
+  background-image: url(../assets/images/whale.png);  
 }
+
 .squid {
-  background-image: url(../assets/images/squid.png);
-  background-repeat: no-repeat;
+  background-image: url(../assets/images/squid.png);  
 }
+
 .dolphin {
-  background-image: url(../assets/images/dolphin.png);
-  background-repeat: no-repeat;
+  background-image: url(../assets/images/dolphin.png);  
 }
+
 .starfish {
-  background-image: url(../assets/images/starfish.png);
-  background-repeat: no-repeat;
+  background-image: url(../assets/images/starfish.png);  
 }
+
 .seal {
-  background-image: url(../assets/images/seal.png);
-  background-repeat: no-repeat;
+  background-image: url(../assets/images/seal.png);  
 }
+
 .crab {
-  background-image: url(../assets/images/crab.png);
+  background-image: url(../assets/images/crab.png);  
+}
+.seahorse, .octopus, .shark, .whale, .squid, .dolphin, .starfish, .seal, .crab {
   background-repeat: no-repeat;
+  background-position-y: center;
+  background-position-x: center;
+  color: transparent;
 }
