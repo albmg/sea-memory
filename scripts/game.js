@@ -27,7 +27,7 @@ function printCards () {
     let animal = animalsShuffle[i];
     cells[i].innerText = animal;
     cells[i].classList.add(animal);
-    cells[i].onclick = storeCell;    
+    cells[i].onclick = storeCards;    
   }
 }
 
@@ -44,8 +44,15 @@ function printBoard () {
 }
 
 var players = ["p1", "p2"];
+var currentPlayer = players[0];
 
-function selectPlayers () {
+function nextPlayer(current) {
+  let index = players.indexOf(current) === -1 ? 0 : players.indexOf(current) + 1;
+
+  currentPlayer = players[index] ? players[index] : players[0];
+}
+
+/*function selectPlayers () {
   var pl1 = document.querySelector(".player-one");
   var p1 = pl1.innerText;
   var pl2 = document.querySelector(".player-one");
@@ -58,52 +65,68 @@ function selectPlayers () {
       console.log(p2 + " es tu turno");
       //alert(`${p2} es tu turno`);
     }  
-}
+}*/
 
 
 var checkCards = [];
 
-function storeCell (e) {      
+
+
+function storeCards (e) {      
   //console.log(e);
-  selectPlayers();
+  //selectPlayers();
+  e.target.classList.add("active");
+  e.target.onclick = "";
+  var selectedCard = document.getElementsByClassName("active");
   switch (checkCards.length){
-    case 0: 
-      e.target.classList.add("active");
-      e.target.onclick = "";
+    case 0:      
       checkCards.push(e.target.innerText);      
       break;
-    case 1:
-      e.target.classList.add("active");
-      e.target.onclick = "";
+    case 1:      
       checkCards.push(e.target.innerText);      
-      var checkingCard = document.getElementsByClassName("active");
-      for (var i = 0; i < checkingCard.length; i++) {
+
+      for (var i = 0; i < selectedCard.length; i++) {
         if (checkCards[0] === checkCards[1]) {     
-          checkingCard[i].classList.add("checked");                   
-          checkCards = [];
-          //console.log(checkCards.length);                    
+          selectedCard[i].classList.add("hit");                   
+          checkCards = [];                             
         } 
-        if (checkCards[0] !== checkCards[1] && !checkingCard[i].classList.contains("checked"))
-        {  
-          console.log(checkingCard[i]) 
-          checkingCard[i].classList.add("fail");                   
+        if (checkCards[0] !== checkCards[1] && 
+          !selectedCard[i].classList.contains("hit"))
+        {           
+          selectedCard[i].classList.add("fail");                   
         }        
-      }
-      console.log(checkCards.length);
+      }      
       break;
     case 2:
       checkCards = [];
-      var fails = document.querySelectorAll(".cell")
+      var fails = document.querySelectorAll(".cell");
+
       for (var i = 0; i < fails.length; i++) {        
         fails[i].classList.remove("fail");
-        fails[i].classList.remove("active");
-        fails[i].onclick = storeCell;
-      }      
-      cells.className = "";
-      //players.indexOf === 1;
+        fails[i].classList.remove("active");        
+        fails[i].onclick = storeCards;              
+      }
+
+      nextPlayer(currentPlayer);
+      alert("next player");
+
+      /*if (nextPlayer) {
+        for (var j = 0; j < selectedCard.length; j++) {
+          if (checkCards[0] === checkCards[1]) {
+            selectedCard[j].classList.add("hit-player-two");
+            checkCards = [];
+          }        
+        }  
+      }*/
+      
+
+      console.log("hola");
+      
+      console.log(selectedCard);
+
+      cells.className = "";      
       break;
-    default:
-      //storeCell();
+    default:      
   }  
 }
 
@@ -120,16 +143,7 @@ function selectNick() {
 function gameInit (){
   printBoard();
   selectNick();    
-  // function gameInit
-  /*var board = document.querySelector(".board");
-  var div = document.createElement("div");
-  div.classList.add("cell");
-
-  for (let i = 0; i < 3; i++) {
-    for (let j = 0; j < 6; j++) {
-      board.append(div)
-    }
-  }*/
+  
   var playGame = document.querySelectorAll(".play-game")
   playGame[0].addEventListener("click", printCards);
   var resetGame = document.querySelectorAll(".restart-game");

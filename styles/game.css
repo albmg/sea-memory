@@ -59,22 +59,32 @@ h1 {
   /*border:1px solid black;*/
   box-shadow: inset 0px 0px 0px 5px rgb(114, 225, 253);
 }
+
 .active {
   background-color: rgb(43, 90, 177); 
   /*background-color: transparent;*/
   /*transform: rotateY(45);*/
 }
-.checked {
+
+.hit {
   background-color: rgb(99, 241, 99);
   /*transition-delay: 1s;*/
   transition:linear 0.2s;
 }
+
+.hit-player-two {
+  background-color: rgb(250, 130, 50);
+  transition:linear 0.2s;
+}
+
 .fail {
   background-color:rgba(249, 0, 0, 0.38);
   /*transition-delay: 1s;*/
   transition:linear 0.2s;
 }
+
 /*** CSS CARDS ***/
+
 .seahorse {
   background-image: url(../assets/images/seahorse.png);  
 }
@@ -161,4 +171,3 @@ input {
   top:-250px;
   left:889px
 }
-button.music-on
