@@ -36,8 +36,7 @@ function printBoard () {
 
   for (let i = 0; i < 3 * 6; i++) {
     const div = document.createElement("div");
-    div.classList.add("cell");
-    //div.classList.add("aqua");
+    div.classList.add("cell");    
     board.appendChild(div);
   }
   //paintCards();
@@ -52,29 +51,33 @@ function nextPlayer(current) {
   currentPlayer = players[index] ? players[index] : players[0];
 }
 
-/*function selectPlayers () {
+function selectPlayers () {
   var pl1 = document.querySelector(".player-one");
   var p1 = pl1.innerText;
-  var pl2 = document.querySelector(".player-one");
+  var pl2 = document.querySelector(".player-two");
   var p2 = pl2.innerText;
-  if (players.indexOf("p1")) {
-      console.log(p1 + " es tu turno");
+  var pa = document.querySelector(".players-a");
+  var pb = document.querySelector(".players-b");
+  if (currentPlayer === players[1]) {
+      console.log(p2 + " es tu turno");      
+      pb.classList.add("hit-player-two");
+      pa.classList.remove("hit");
       //alert(`${p1} es tu turno`);
-    }
-    else {
-      console.log(p2 + " es tu turno");
+  }
+  else {
+      console.log(p1 + " es tu turno");
+      pa.classList.add("hit");
+      pb.classList.remove("hit-player-two")
       //alert(`${p2} es tu turno`);
-    }  
-}*/
+  }  
+}
 
 
 var checkCards = [];
 
-
-
 function storeCards (e) {      
   //console.log(e);
-  //selectPlayers();
+  selectPlayers();
   e.target.classList.add("active");
   e.target.onclick = "";
   var selectedCard = document.getElementsByClassName("active");
@@ -124,19 +127,24 @@ function storeCards (e) {
 }
 
 function selectNick() {
-  document.addEventListener('keypress', function (e) {
+  var playerOneName = document.querySelectorAll(".player-one-name");
+  playerOneName[0].addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
-      // code for enter
-      playerOneNick[0].innerText = playerOneName[0].value
-      playerTwoNick[0].innerText = playerTwoName[0].value
+      playerOneNick[0].innerText = playerOneName[0].value;
     }
-  });
+  })
+
+  var playerTwoName = document.querySelectorAll(".player-two-name");
+  playerTwoName[0].addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      playerTwoNick[0].innerText = playerTwoName[0].value;
+    }
+  }) 
 }
 
 function gameInit (){
   printBoard();
-  selectNick();    
-  
+  selectNick();      
   var playGame = document.querySelectorAll(".play-game")
   playGame[0].addEventListener("click", printCards);
   var resetGame = document.querySelectorAll(".restart-game");

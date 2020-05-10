@@ -31,13 +31,14 @@ html, body, div {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;  
+  margin-top: 20px;
 }
 
 h1 {
   text-align: center;
 }
 
-.players {
+.players-a, .players-b {
   width: 45%;
   padding: 5px;
   border:3px solid rgb(48, 28, 28);
@@ -53,7 +54,7 @@ h1 {
   border:3px solid rgb(48, 28, 28);
   border-radius: 2px;
   text-align: center;
-  /*cursor: pointer;*/
+  cursor: pointer;
 }
 .cell:hover {
   /*border:1px solid black;*/
@@ -67,13 +68,13 @@ h1 {
 }
 
 .hit {
-  background-color: rgb(99, 241, 99);
+  background-color:rgb(166, 255, 165);
   /*transition-delay: 1s;*/
   transition:linear 0.2s;
 }
 
 .hit-player-two {
-  background-color: rgb(250, 130, 50);
+  background-color:rgb(255, 206, 165);
   transition:linear 0.2s;
 }
 
