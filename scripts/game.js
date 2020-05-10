@@ -86,15 +86,22 @@ function storeCards (e) {
       checkCards.push(e.target.innerText);      
 
       for (var i = 0; i < selectedCard.length; i++) {
-        if (checkCards[0] === checkCards[1]) {     
-          selectedCard[i].classList.add("hit");                   
-          checkCards = [];                             
+        if (checkCards[0] === checkCards[1]) {  
+          if (currentPlayer === players[1]) {
+            //console.log("Deberías cambiar de color");
+            selectedCard[i].classList.add("hit-player-two");
+            checkCards = [];          
+          } else {
+            selectedCard[i].classList.add("hit");                   
+            checkCards = [];            
+          }                             
         } 
         if (checkCards[0] !== checkCards[1] && 
-          !selectedCard[i].classList.contains("hit"))
+          !selectedCard[i].classList.contains("hit") &&
+          !selectedCard[i].classList.contains("hit-player-two"))
         {           
-          selectedCard[i].classList.add("fail");                   
-        }        
+          selectedCard[i].classList.add("fail");                             
+        }                
       }      
       break;
     case 2:
@@ -108,21 +115,7 @@ function storeCards (e) {
       }
 
       nextPlayer(currentPlayer);
-      alert("next player");
-
-      /*if (nextPlayer) {
-        for (var j = 0; j < selectedCard.length; j++) {
-          if (checkCards[0] === checkCards[1]) {
-            selectedCard[j].classList.add("hit-player-two");
-            checkCards = [];
-          }        
-        }  
-      }*/
-      
-
-      console.log("hola");
-      
-      console.log(selectedCard);
+      alert("next player");      
 
       cells.className = "";      
       break;

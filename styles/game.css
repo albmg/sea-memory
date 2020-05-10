@@ -132,7 +132,7 @@ h1 {
   /*background-image: url(../assets/images/coral.png);  */
 }
 
-.p1, .p2, .play-game, .restart-game, .music, .sound-effects {
+/*.p1, .p2, .play-game, .restart-game, .music, .sound-effects {
   position: relative;  
 }
 .play-game, .restart-game, .music-on, .music-off, .se-on, .se-off {
@@ -170,4 +170,13 @@ input {
 .sound-effects {
   top:-250px;
   left:889px
+}*/
+
+.input-name {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /*flex-wrap: wrap;*/
+  top: -579px;
+  left: 880px;
 }
