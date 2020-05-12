@@ -25,12 +25,7 @@ function Game() {
 
   this.init = function () {
     this.animalsShuffle = self.shuffle(animals);
-    this.printBoard();
-    //var playGame = document.querySelectorAll(".play-game")
-    var resetGame = document.querySelectorAll(".restart-game");
-
-    //playGame[0].addEventListener("click", this.printCards);
-    resetGame[0].addEventListener("click", gameReset);
+    this.printBoard();    
   };
 
   this.printBoard = function () {
@@ -65,7 +60,7 @@ function Game() {
       cells[i].classList.add(animal);
       cells[i].onclick = storeCards;
     }
-  };
+  };  
 }
 
 const cells = document.getElementsByClassName('cell');
@@ -79,25 +74,6 @@ function nextPlayer(current) {
   currentPlayer = players[index] ? players[index] : players[0];
 }
 
-function selectPlayers () {
-  //var pl1 = document.querySelector(".player-one");
-  //var p1 = pl1.innerText;
-  //var pl2 = document.querySelector(".player-two");
-  //var p2 = pl2.innerText;
-  var pa = document.querySelector(".players-a");
-  var pb = document.querySelector(".players-b");
-  if (currentPlayer === players[1]) {
-      //console.log(p2 + " es tu turno");      
-      pb.classList.add("hit-player-two");
-      pa.classList.remove("hit");           
-  }
-  else {
-      //console.log(p1 + " es tu turno");
-      pa.classList.add("hit");
-      pb.classList.remove("hit-player-two")    
-     
-  }  
-}
 
 function timer () {
   var initialTime = 20;
@@ -168,15 +144,35 @@ function storeCards (e) {
   }  
 }
 
+function selectPlayers () {
+  //var pl1 = document.querySelector(".player-one");
+  //var p1 = pl1.innerText;
+  //var pl2 = document.querySelector(".player-two");
+  //var p2 = pl2.innerText;
+  var pa = document.querySelector(".players-a");
+  var pb = document.querySelector(".players-b");
+  if (currentPlayer === players[1]) {
+    //console.log(p2 + " es tu turno");      
+    pb.classList.add("hit-player-two");
+    pa.classList.remove("hit");
+  }
+  else {
+    //console.log(p1 + " es tu turno");
+    pa.classList.add("hit");
+    pb.classList.remove("hit-player-two")
+
+  }
+}
+
+var playerOneName = document.querySelectorAll(".player-one-name");
+var playerTwoName = document.querySelectorAll(".player-two-name");
+
 function selectNick() {
-  var playerOneName = document.querySelectorAll(".player-one-name");
   playerOneName[0].addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
       playerOneNick[0].innerText = playerOneName[0].value;
     }
   })
-
-  var playerTwoName = document.querySelectorAll(".player-two-name");
   playerTwoName[0].addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
       playerTwoNick[0].innerText = playerTwoName[0].value;
@@ -184,10 +180,38 @@ function selectNick() {
   }) 
 }
 
-var game = new Game();
-game.init();
+/*function blockNick () {
+  playerOneName[0].removeEventListener("disabled", EventTarget);
+}*/
 
+function changeBackground () {
+  var backg = document.getElementsByClassName("board");
+  var h1text = document.getElementsByTagName("h1");
+  backg[0].style.backgroundColor = "white";
+  h1text[0].innerText = "";
+}
+
+function blockStartGame () {
+  playGame.removeEventListener("click", startGame);
+}
 
 function gameReset () {
   window.location.reload(true);
+}
+
+var playGame = document.querySelector(".play-game")
+var resetGame = document.querySelector(".restart-game");
+playGame.addEventListener("click", startGame);
+/*playGame.removeEventListener("click", iniciarPartida);*/
+resetGame.addEventListener("click", this.gameReset);
+
+
+selectNick();
+
+function startGame () {  
+  var game = new Game();
+  game.init();
+  changeBackground();
+  //blockNick();
+  blockStartGame();
 }
