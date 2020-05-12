@@ -31,50 +31,103 @@ html, body, div {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;  
+  margin-top: 20px;
+  height: 520px;
+  background-color:#abd5ff;
 }
 
 h1 {
   text-align: center;
+  position: fixed;
+  /*left: 820px;
+  top: 300px;  */
+  left: 789px;
+  top: 179px;
+  color: white;
+  font-size: 4em;
+  font-weight: bold;
 }
 
-.players {
+/* Nick and Score */
+.players-a, .players-b {
   width: 45%;
   padding: 5px;
-  border:3px solid rgb(48, 28, 28);
+  border:2px solid grey /* rgb(48, 28, 28)*/;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  /*flex-direction: row;*/
+  /*flex-wrap: nowrap;*/
   justify-content: space-between;   
+  margin:5px;
+  border-radius:2px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
+
 .cell {
   width: 14%;
   padding: 5px;
   height: 150px;
-  border:3px solid rgb(48, 28, 28);
+  border:2px solid grey /* rgb(48, 28, 28)*/;
   border-radius: 2px;
   text-align: center;
-  /*cursor: pointer;*/
+  cursor: pointer;  
+  margin:2px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 .cell:hover {
   /*border:1px solid black;*/
   box-shadow: inset 0px 0px 0px 5px rgb(114, 225, 253);
+  /*visibility: visible;*/
 }
-.active {
+
+/*:active {
+  background: aliceblue;
+}*/
+
+/* progress bar */
+.timer {
+  /*position:fixed;*/
+  top:680px;
+  left:654px;
+  display: flex;  
+  flex-direction: row;
+}
+progress[value] {
+  position: relative;
+  top: 20px;
+  left: 120px;
+  width: 530px;
+  height: 20px;
+  /*background-color: #eee;  */
+}
+
+/*** CARDS CLASSES EVENTS ***/
+
+.clicked {
   background-color: rgb(43, 90, 177); 
   /*background-color: transparent;*/
   /*transform: rotateY(45);*/
+  backface-visibility: visible;
 }
-.checked {
-  background-color: rgb(99, 241, 99);
+
+.hit {
+  background-color:rgb(166, 255, 165);
   /*transition-delay: 1s;*/
   transition:linear 0.2s;
 }
+
+.hit-player-two {
+  background-color:rgb(255, 206, 165);
+  transition:linear 0.2s;
+}
+
 .fail {
   background-color:rgba(249, 0, 0, 0.38);
   /*transition-delay: 1s;*/
   transition:linear 0.2s;
 }
+
 /*** CSS CARDS ***/
+
 .seahorse {
   background-image: url(../assets/images/seahorse.png);  
 }
@@ -117,7 +170,52 @@ h1 {
   transform: rotateY(45);
 }
 
-.aqua {
-  /*background-color:black;*/
-  /*background-image: url(../assets/images/coral.png);  */
+/*.aqua {
+  background-color:aqua;
+  /*background-image: url(../assets/images/coral.png);  
+}*/
+
+/* Control panel */
+
+/*.p1, .p2, .play-game, .restart-game, .music, .sound-effects {
+  position: relative;  
+}*/
+.play-game, .restart-game, .music-on, .music-off, .se-on, .se-off {
+  padding:10px;
+}
+
+.p1, .p2, .start, .reset  {  
+  margin-bottom: 10px;
+}
+
+button {
+  
+}
+
+.restart-game {
+  
+}
+
+/*.player-one-name, .player-two-name{
+  margin-left: 5px;
+}*/
+
+.music {
+  
+}
+.sound-effects {
+  
+}
+
+.control-panel {
+  /*position: relative;*/
+  position:fixed;
+  display: flex;
+  flex-direction: column;
+  /*flex-wrap: wrap;*/
+  /*top: -579px;*/
+  top:80px;
+  /*left: 880px;*/
+  left:1400px;
+  width:150px;
 }

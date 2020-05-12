@@ -63,14 +63,18 @@ function Dom() {
   };
 
   this.paintCards = function () {
-    for (var i = 0; i < game.cells.length; i++) {
+    for (var i = 0; i < cells.length; i++) {
       let animal = self.animalsShuffle[i];
-      game.cells[i].innerText = animal;
-      game.cells[i].classList.add(animal);
-      game.cells[i].onclick = game.checkCard;
+      cells[i].innerText = animal;
+      cells[i].classList.add(animal);
+      cells[i].onclick = checkCard;
     }
   };
 }
 
 var dom = new Dom();
-dom.init();
+
+window.onload = () => {
+  dom.init();
+  startGame();
+}
