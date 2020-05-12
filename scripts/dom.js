@@ -67,7 +67,8 @@ function Dom() {
       let animal = self.animalsShuffle[i];
       cells[i].innerText = animal;
       cells[i].classList.add(animal);
-      cells[i].onclick = checkCard;
+      // cells[i].onclick = checkCard;
+      cells[i].onclick = storeCards;
     }
   };
 }
