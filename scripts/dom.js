@@ -1,5 +1,3 @@
-import * as game from "./game.js";
-
 var ANIMALS = [
   "whale",
   "whale",
@@ -42,6 +40,7 @@ function Dom() {
       const div = document.createElement("div");
       div.classList.add("cell");
       div.classList.add("aqua");
+      div.classList.add("invisible");
       board.appendChild(div);
     }
 
@@ -75,8 +74,3 @@ function Dom() {
 
 var dom = new Dom();
 dom.init();
-
-var playerOneName = document.querySelectorAll(".player-one-name");
-var playerOneNick = document.querySelectorAll(".player-one");
-var playerTwoName = document.querySelectorAll(".player-two-name");
-var playerTwoNick = document.querySelectorAll(".player-two");
