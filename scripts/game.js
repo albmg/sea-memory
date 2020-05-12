@@ -1,46 +1,74 @@
-var animals = ["whale", "whale", "dolphin", "dolphin", "starfish", "starfish", "shark", "shark", "seal",
-  "seal", "squid", "squid", "octopus", "octopus", "crab", "crab", "seahorse", "seahorse"]
+var animals = [
+    "whale",
+    "whale", 
+    "dolphin", 
+    "dolphin", 
+    "starfish", 
+    "starfish", 
+    "shark", 
+    "shark", 
+    "seal",
+    "seal", 
+    "squid", 
+    "squid", 
+    "octopus", 
+    "octopus", 
+    "crab", 
+    "crab", 
+    "seahorse", 
+    "seahorse"]
 
-function shuffle(array) {
-  var m = array.length, t, i;
-    
-  while (m) {   
-    i = Math.floor(Math.random() * m--); 
-    t = array[m];
-    array[m] = array[i];
-    array[i] = t;
+
+function Game() {
+  var self = this;
+  this.animalsShuffle = [];
+
+  this.init = function () {
+    this.animalsShuffle = self.shuffle(animals);
+    this.printBoard();
+    //var playGame = document.querySelectorAll(".play-game")
+    var resetGame = document.querySelectorAll(".restart-game");
+
+    //playGame[0].addEventListener("click", this.printCards);
+    resetGame[0].addEventListener("click", gameReset);
+  };
+
+  this.printBoard = function () {
+    let board = document.querySelector(".board");
+
+    for (let i = 0; i < 3 * 6; i++) {
+      const div = document.createElement("div");
+      div.classList.add("cell");
+      board.appendChild(div);
+    }    
+
+    this.printCards();
+  };
+
+  this.shuffle = function (array) {
+    var m = array.length, t, i;
+
+    while (m) {
+      i = Math.floor(Math.random() * m--);
+      t = array[m];
+      array[m] = array[i];
+      array[i] = t;
     }
     return array;
+  };
+
+  this.printCards = function() {
+    
+    for (var i = 0; i < cells.length; i++) {
+      let animal = self.animalsShuffle[i];
+      cells[i].innerText = animal;
+      cells[i].classList.add(animal);
+      cells[i].onclick = storeCards;
+    }
+  };
 }
-
-
-
-
-var animalsShuffle = shuffle(animals);
-
 
 const cells = document.getElementsByClassName('cell');
-
-function printCards () {
-  //selectCell();  
-  for (var i = 0; i < cells.length; i++) {
-    let animal = animalsShuffle[i];
-    cells[i].innerText = animal;
-    cells[i].classList.add(animal);
-    cells[i].onclick = storeCards;    
-  }
-}
-
-function printBoard () {
-  let board = document.querySelector(".board");
-
-  for (let i = 0; i < 3 * 6; i++) {
-    const div = document.createElement("div");
-    div.classList.add("cell");    
-    board.appendChild(div);
-  }
-  //paintCards();
-}
 
 var players = ["p1", "p2"];
 var currentPlayer = players[0];
@@ -52,38 +80,51 @@ function nextPlayer(current) {
 }
 
 function selectPlayers () {
-  var pl1 = document.querySelector(".player-one");
-  var p1 = pl1.innerText;
-  var pl2 = document.querySelector(".player-two");
-  var p2 = pl2.innerText;
+  //var pl1 = document.querySelector(".player-one");
+  //var p1 = pl1.innerText;
+  //var pl2 = document.querySelector(".player-two");
+  //var p2 = pl2.innerText;
   var pa = document.querySelector(".players-a");
   var pb = document.querySelector(".players-b");
   if (currentPlayer === players[1]) {
-      console.log(p2 + " es tu turno");      
+      //console.log(p2 + " es tu turno");      
       pb.classList.add("hit-player-two");
-      pa.classList.remove("hit");
-      //alert(`${p1} es tu turno`);
+      pa.classList.remove("hit");           
   }
   else {
-      console.log(p1 + " es tu turno");
+      //console.log(p1 + " es tu turno");
       pa.classList.add("hit");
-      pb.classList.remove("hit-player-two")
-      //alert(`${p2} es tu turno`);
+      pb.classList.remove("hit-player-two")    
+     
   }  
+}
+
+function timer () {
+  var initialTime = 20;
+  var timerId = setInterval(function () {
+    document.getElementById("timer").value = initialTime;    
+    if (initialTime <= 0) {
+      clearInterval(timerId);
+    }
+    initialTime -= 1;
+    console.log(initialTime)
+  }, 1000);
 }
 
 
 var checkCards = [];
 
 function storeCards (e) {      
-  //console.log(e);
+  //console.log(e);  
   selectPlayers();
-  e.target.classList.add("active");
+  e.target.classList.add("clicked");
   e.target.onclick = "";
-  var selectedCard = document.getElementsByClassName("active");
+  
+  var selectedCard = document.getElementsByClassName("clicked");  
+
   switch (checkCards.length){
     case 0:      
-      checkCards.push(e.target.innerText);      
+      checkCards.push(e.target.innerText);            
       break;
     case 1:      
       checkCards.push(e.target.innerText);      
@@ -103,7 +144,7 @@ function storeCards (e) {
           !selectedCard[i].classList.contains("hit") &&
           !selectedCard[i].classList.contains("hit-player-two"))
         {           
-          selectedCard[i].classList.add("fail");                             
+          selectedCard[i].classList.add("fail");                                  
         }                
       }      
       break;
@@ -113,12 +154,13 @@ function storeCards (e) {
 
       for (var i = 0; i < fails.length; i++) {        
         fails[i].classList.remove("fail");
-        fails[i].classList.remove("active");        
+        fails[i].classList.remove("clicked");        
         fails[i].onclick = storeCards;              
       }
 
       nextPlayer(currentPlayer);
-      alert("next player");      
+      alert("next player");
+      timer();            
 
       cells.className = "";      
       break;
@@ -142,19 +184,10 @@ function selectNick() {
   }) 
 }
 
-function gameInit (){
-  printBoard();
-  selectNick();      
-  var playGame = document.querySelectorAll(".play-game")
-  playGame[0].addEventListener("click", printCards);
-  var resetGame = document.querySelectorAll(".restart-game");
-  resetGame[0].addEventListener("click", gameReset);
-}
+var game = new Game();
+game.init();
+
 
 function gameReset () {
   window.location.reload(true);
 }
-
-gameInit();
-
-//paintCards();

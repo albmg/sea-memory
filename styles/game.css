@@ -38,33 +38,58 @@ h1 {
   text-align: center;
 }
 
+/* Nick and Score */
 .players-a, .players-b {
   width: 45%;
   padding: 5px;
-  border:3px solid rgb(48, 28, 28);
+  border:2px solid grey /* rgb(48, 28, 28)*/;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  /*flex-direction: row;*/
+  /*flex-wrap: nowrap;*/
   justify-content: space-between;   
+  margin:5px;
+  border-radius:2px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
+
 .cell {
   width: 14%;
   padding: 5px;
   height: 150px;
-  border:3px solid rgb(48, 28, 28);
+  border:2px solid grey /* rgb(48, 28, 28)*/;
   border-radius: 2px;
   text-align: center;
-  cursor: pointer;
+  cursor: pointer;  
+  margin:2px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 .cell:hover {
   /*border:1px solid black;*/
   box-shadow: inset 0px 0px 0px 5px rgb(114, 225, 253);
+  /*visibility: visible;*/
 }
 
-.active {
+/*:active {
+  background: aliceblue;
+}*/
+
+/* progress bar */
+progress[value] {
+  position: relative;
+  top: -200px;
+  left: 149px;
+  width: 530px;
+  height: 20px;
+  /*background-color: #eee;  */
+}
+
+/*** CARDS CLASSES EVENTS ***/
+
+.clicked {
   background-color: rgb(43, 90, 177); 
   /*background-color: transparent;*/
   /*transform: rotateY(45);*/
+  backface-visibility: visible;
 }
 
 .hit {
@@ -128,56 +153,49 @@ h1 {
   transform: rotateY(45);
 }
 
-.aqua {
-  /*background-color:black;*/
-  /*background-image: url(../assets/images/coral.png);  */
-}
+/*.aqua {
+  background-color:aqua;
+  /*background-image: url(../assets/images/coral.png);  
+}*/
+
+/* Control panel */
 
 /*.p1, .p2, .play-game, .restart-game, .music, .sound-effects {
   position: relative;  
-}
+}*/
 .play-game, .restart-game, .music-on, .music-off, .se-on, .se-off {
   padding:10px;
 }
 
-.p1 {  
-  top: -550px;
-  left: 900px;
+.p1, .p2, .start, .reset  {  
+  margin-bottom: 10px;
 }
 
-.p2 {
-  top: -500px;
-  left: 660px;
-}
-
-.play-game {
-  top: -420px;
-  left: 500px;
+button {
+  
 }
 
 .restart-game {
-  top: -350px;
-  left: 405px;
+  
 }
 
-input {
-  margin-left:10px;
-}
-
-.music {
-  top:-280px;
-  left:255px;
-}
-.sound-effects {
-  top:-250px;
-  left:889px
+/*.player-one-name, .player-two-name{
+  margin-left: 5px;
 }*/
 
-.input-name {
+.music {
+  
+}
+.sound-effects {
+  
+}
+
+.control-panel {
   position: relative;
   display: flex;
   flex-direction: column;
   /*flex-wrap: wrap;*/
   top: -579px;
   left: 880px;
+  width:150px;
 }
