@@ -1,7 +1,18 @@
-html, body, div {
+@font-face {
+  font-family: goodMorning;
+  src: url(/assets/fonts/Good\ Morning.ttf);
+}
+
+@font-face {
+  font-family: jambo;
+  src: url(/assets/fonts/DK\ Jambo.otf);
+}
+
+html, body, div, input, button {
   margin:0;
   padding:0;
   border:0;
+  font-family: jambo;
 }
 
 .site-wrapper {
@@ -33,7 +44,11 @@ html, body, div {
   justify-content: center;  
   margin-top: 20px;
   height: 520px;
-  background-color:#abd5ff;
+  background-color:hsl(210, 47%, 59%);
+  border-radius:2px;
+  /*box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);*/
+  /*box-sizing: content-box;*/
+  
 }
 
 h1 {
@@ -41,18 +56,23 @@ h1 {
   position: fixed;
   /*left: 820px;
   top: 300px;  */
-  left: 789px;
+  left: 608px;
   top: 179px;
   color: white;
   font-size: 4em;
   font-weight: bold;
+  font-family: goodMorning;
+  text-transform: uppercase;
 }
+ h3 {
+   font-size:1.5em;
+ }
 
 /* Nick and Score */
 .players-a, .players-b {
   width: 45%;
   padding: 5px;
-  border:2px solid grey /* rgb(48, 28, 28)*/;
+  border-bottom:2px solid grey /* rgb(48, 28, 28)*/;
   display: flex;
   /*flex-direction: row;*/
   /*flex-wrap: nowrap;*/
@@ -71,13 +91,19 @@ h1 {
   text-align: center;
   cursor: pointer;  
   margin:2px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);  
+  /*opacity: 0;*/  
 }
+
 .cell:hover {
   /*border:1px solid black;*/
   box-shadow: inset 0px 0px 0px 5px rgb(114, 225, 253);
   /*visibility: visible;*/
 }
+
+/*.aqua {
+  background: white;
+}*/
 
 /*:active {
   background: aliceblue;
@@ -85,16 +111,16 @@ h1 {
 
 /* progress bar */
 .timer {
-  /*position:fixed;*/
-  top:680px;
-  left:654px;
+  position:relative;
+  /*top:680px;*/
+  left:16px;
   display: flex;  
   flex-direction: row;
 }
 progress[value] {
   position: relative;
-  top: 20px;
-  left: 120px;
+  top: 25px;
+  left: 95px;
   width: 530px;
   height: 20px;
   /*background-color: #eee;  */
@@ -103,10 +129,10 @@ progress[value] {
 /*** CARDS CLASSES EVENTS ***/
 
 .clicked {
-  background-color: rgb(43, 90, 177); 
+  /*background-color: rgb(43, 90, 177); */
   /*background-color: transparent;*/
   /*transform: rotateY(45);*/
-  backface-visibility: visible;
+  opacity:1;
 }
 
 .hit {
@@ -127,6 +153,10 @@ progress[value] {
 }
 
 /*** CSS CARDS ***/
+
+/*.coral {
+  /*background-image: url(../assets/images/coral.png);  
+}*/
 
 .seahorse {
   background-image: url(../assets/images/seahorse.png);  
@@ -166,46 +196,13 @@ progress[value] {
   background-repeat: no-repeat;
   background-position-y: center;
   background-position-x: center;
-  color: transparent;
-  transform: rotateY(45);
+  /*color: transparent;*/
+  /*transform: rotateY(45);*/  
 }
 
-/*.aqua {
-  background-color:aqua;
-  /*background-image: url(../assets/images/coral.png);  
-}*/
+
 
 /* Control panel */
-
-/*.p1, .p2, .play-game, .restart-game, .music, .sound-effects {
-  position: relative;  
-}*/
-.play-game, .restart-game, .music-on, .music-off, .se-on, .se-off {
-  padding:10px;
-}
-
-.p1, .p2, .start, .reset  {  
-  margin-bottom: 10px;
-}
-
-button {
-  
-}
-
-.restart-game {
-  
-}
-
-/*.player-one-name, .player-two-name{
-  margin-left: 5px;
-}*/
-
-.music {
-  
-}
-.sound-effects {
-  
-}
 
 .control-panel {
   /*position: relative;*/
@@ -218,4 +215,53 @@ button {
   /*left: 880px;*/
   left:1400px;
   width:150px;
+  font-size:1.5em;
+}
+
+button {
+  width: 180px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  font-size:0.8em;  
+  color: #fff;  
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin-top:15px;
+  font-weight: bold;
+}
+
+button.play-game {
+  background-color:rgb(101, 163, 226);
+}
+
+button.play-game:hover {  
+  box-shadow: inset 0px 0px 0px 5px rgb(101, 163, 226);
+  background:white;
+  color:rgb(101, 163, 226);  
+}
+
+button.restart-game {
+  /*background-color: rgb(255, 206, 165);*/
+  background-color: #fd7d0f;
+}
+
+button.restart-game:hover {  
+  box-shadow: inset 0px 0px 0px 5px #fd7d0f;
+  background:white;
+  color:#fd7d0f;
+}
+/*.p1, .p2, .play-game, .restart-game, .music, .sound-effects {
+  position: relative;  
+}*/
+.play-game, .restart-game, .music-on, .music-off, .se-on, .se-off {
+  padding:20px;
+}
+
+.p1, .p2, .start, .reset  {  
+  margin-bottom: 20px;
+}
+
+input {
+  border-bottom: 1px solid black;
+  padding:15px;
 }

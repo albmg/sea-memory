@@ -58,6 +58,7 @@ function Game() {
       let animal = self.animalsShuffle[i];
       cells[i].innerText = animal;
       cells[i].classList.add(animal);
+      /*cells[i].classList.add("coral");*/
       cells[i].onclick = storeCards;
     }
   };  
@@ -85,6 +86,8 @@ function timer () {
     initialTime -= 1;
     console.log(initialTime)
   }, 1000);
+
+  return timerId;
 }
 
 
@@ -95,6 +98,8 @@ function storeCards (e) {
   selectPlayers();
   e.target.classList.add("clicked");
   e.target.onclick = "";
+  var timerId = null;
+  timerId = timer();
   
   var selectedCard = document.getElementsByClassName("clicked");  
 
@@ -120,7 +125,9 @@ function storeCards (e) {
           !selectedCard[i].classList.contains("hit") &&
           !selectedCard[i].classList.contains("hit-player-two"))
         {           
-          selectedCard[i].classList.add("fail");                                  
+          selectedCard[i].classList.add("fail");
+          clearInterval(timerId);
+          timerId = timer();                                  
         }                
       }      
       break;
@@ -136,7 +143,8 @@ function storeCards (e) {
 
       nextPlayer(currentPlayer);
       alert("next player");
-      timer();            
+      clearInterval(timerId);
+      timerId = timer();            
 
       cells.className = "";      
       break;
