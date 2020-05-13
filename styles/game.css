@@ -1,104 +1,108 @@
 @font-face {
-  font-family: goodMorning;
-  src: url(/assets/fonts/Good\ Morning.ttf);
+	font-family: goodMorning;
+	src: url(/assets/fonts/Good\Morning.ttf);
 }
 
 @font-face {
-  font-family: jambo;
-  src: url(/assets/fonts/DK\ Jambo.otf);
+	font-family: jambo;
+	src: url(/assets/fonts/DK\Jambo.otf);
 }
 
-html, body, div, input, button {
-  margin:0;
-  padding:0;
-  border:0;
-  font-family: jambo;
+html,
+body,
+div,
+input,
+button {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-family: jambo;
 }
 
 .site-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
 #site-main {
-  width: 1040px;
-  margin: 0 auto;
+	width: 1040px;
+	margin: 0 auto;
 }
 .boardgame {
-  margin: 0 auto;
-  padding: 0 0 3vw;
-  max-width: 80%;  
+	margin: 0 auto;
+	padding: 0 0 3vw;
+	max-width: 80%;
 }
 
 .scores {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center; 
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
 }
 
 .board {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;  
-  margin-top: 20px;
-  height: 520px;
-  background-color:hsl(210, 47%, 59%);
-  border-radius:2px;
-  /*box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);*/
-  /*box-sizing: content-box;*/
-  
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-top: 20px;
+	height: 520px;
+	background-color: hsl(210, 47%, 59%);
+	border-radius: 2px;
+	/*box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);*/
+	/*box-sizing: content-box;*/
 }
 
 h1 {
-  text-align: center;
-  position: fixed;
-  /*left: 820px;
+	text-align: center;
+	position: fixed;
+	/*left: 820px;
   top: 300px;  */
-  left: 608px;
-  top: 179px;
-  color: white;
-  font-size: 4em;
-  font-weight: bold;
-  font-family: goodMorning;
-  text-transform: uppercase;
+	left: 608px;
+	top: 179px;
+	color: white;
+	font-size: 4em;
+	font-weight: bold;
+	font-family: goodMorning;
+	text-transform: uppercase;
 }
- h3 {
-   font-size:1.5em;
- }
+h3 {
+	font-size: 1.5em;
+}
 
 /* Nick and Score */
-.players-a, .players-b {
-  width: 45%;
-  padding: 5px;
-  border-bottom:2px solid grey /* rgb(48, 28, 28)*/;
-  display: flex;
-  /*flex-direction: row;*/
-  /*flex-wrap: nowrap;*/
-  justify-content: space-between;   
-  margin:5px;
-  border-radius:2px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+.players-a,
+.players-b {
+	width: 45%;
+	padding: 5px;
+	border-bottom: 2px solid grey /* rgb(48, 28, 28)*/;
+	display: flex;
+	/*flex-direction: row;*/
+	/*flex-wrap: nowrap;*/
+	justify-content: space-between;
+	margin: 5px;
+	border-radius: 2px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .cell {
-  width: 14%;
-  padding: 5px;
-  height: 150px;
-  border:2px solid grey /* rgb(48, 28, 28)*/;
-  border-radius: 2px;
-  text-align: center;
-  cursor: pointer;  
-  margin:2px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);  
-  /*opacity: 0;*/  
+	width: 14%;
+	padding: 5px;
+	height: 150px;
+	border: 2px solid grey /* rgb(48, 28, 28)*/;
+	border-radius: 2px;
+	text-align: center;
+	cursor: pointer;
+	margin: 2px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	/*opacity: 0;*/
 }
 
 .cell:hover {
-  /*border:1px solid black;*/
-  box-shadow: inset 0px 0px 0px 5px rgb(114, 225, 253);
-  /*visibility: visible;*/
+	/*border:1px solid black;*/
+	box-shadow: inset 0px 0px 0px 5px rgb(114, 225, 253);
+	/*visibility: visible;*/
 }
 
 /*.aqua {
@@ -111,45 +115,45 @@ h1 {
 
 /* progress bar */
 .timer {
-  position:relative;
-  /*top:680px;*/
-  left:16px;
-  display: flex;  
-  flex-direction: row;
+	position: relative;
+	/*top:680px;*/
+	left: 16px;
+	display: flex;
+	flex-direction: row;
 }
 progress[value] {
-  position: relative;
-  top: 25px;
-  left: 95px;
-  width: 530px;
-  height: 20px;
-  /*background-color: #eee;  */
+	position: relative;
+	top: 25px;
+	left: 95px;
+	width: 530px;
+	height: 20px;
+	/*background-color: #eee;  */
 }
 
 /*** CARDS CLASSES EVENTS ***/
 
 .clicked {
-  /*background-color: rgb(43, 90, 177); */
-  /*background-color: transparent;*/
-  /*transform: rotateY(45);*/
-  opacity:1;
+	/*background-color: rgb(43, 90, 177); */
+	/*background-color: transparent;*/
+	/*transform: rotateY(45);*/
+	opacity: 1;
 }
 
 .hit {
-  background-color:rgb(166, 255, 165);
-  /*transition-delay: 1s;*/
-  transition:linear 0.2s;
+	background-color: rgb(166, 255, 165);
+	/*transition-delay: 1s;*/
+	transition: linear 0.2s;
 }
 
 .hit-player-two {
-  background-color:rgb(255, 206, 165);
-  transition:linear 0.2s;
+	background-color: rgb(255, 206, 165);
+	transition: linear 0.2s;
 }
 
 .fail {
-  background-color:rgba(249, 0, 0, 0.38);
-  /*transition-delay: 1s;*/
-  transition:linear 0.2s;
+	background-color: rgba(249, 0, 0, 0.38);
+	/*transition-delay: 1s;*/
+	transition: linear 0.2s;
 }
 
 /*** CSS CARDS ***/
@@ -159,109 +163,124 @@ progress[value] {
 }*/
 
 .seahorse {
-  background-image: url(../assets/images/seahorse.png);  
+	background-image: url(../assets/images/seahorse.png);
 }
 
 .octopus {
-  background-image: url(../assets/images/octopus2.png);  
+	background-image: url(../assets/images/octopus2.png);
 }
 
 .shark {
-  background-image: url(../assets/images/shark.png);  
+	background-image: url(../assets/images/shark.png);
 }
 .whale {
-  background-image: url(../assets/images/whale.png);  
+	background-image: url(../assets/images/whale.png);
 }
 
 .squid {
-  background-image: url(../assets/images/squid.png);  
+	background-image: url(../assets/images/squid.png);
 }
 
 .dolphin {
-  background-image: url(../assets/images/dolphin.png);  
+	background-image: url(../assets/images/dolphin.png);
 }
 
 .starfish {
-  background-image: url(../assets/images/starfish.png);  
+	background-image: url(../assets/images/starfish.png);
 }
 
 .seal {
-  background-image: url(../assets/images/seal.png);  
+	background-image: url(../assets/images/seal.png);
 }
 
 .crab {
-  background-image: url(../assets/images/crab.png);  
+	background-image: url(../assets/images/crab.png);
 }
-.seahorse, .octopus, .shark, .whale, .squid, .dolphin, .starfish, .seal, .crab, .aqua {
-  background-repeat: no-repeat;
-  background-position-y: center;
-  background-position-x: center;
-  /*color: transparent;*/
-  /*transform: rotateY(45);*/  
+.seahorse,
+.octopus,
+.shark,
+.whale,
+.squid,
+.dolphin,
+.starfish,
+.seal,
+.crab,
+.aqua {
+	background-repeat: no-repeat;
+	background-position-y: center;
+	background-position-x: center;
+	/*color: transparent;*/
+	/*transform: rotateY(45);*/
 }
-
-
 
 /* Control panel */
 
 .control-panel {
-  /*position: relative;*/
-  position:fixed;
-  display: flex;
-  flex-direction: column;
-  /*flex-wrap: wrap;*/
-  /*top: -579px;*/
-  top:80px;
-  /*left: 880px;*/
-  left:1400px;
-  width:150px;
-  font-size:1.5em;
+	/*position: relative;*/
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	/*flex-wrap: wrap;*/
+	/*top: -579px;*/
+	top: 80px;
+	/*left: 880px;*/
+	left: 1400px;
+	width: 150px;
+	font-size: 1.5em;
 }
 
 button {
-  width: 180px;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  font-size:0.8em;  
-  color: #fff;  
-  text-align: center;
-  font-family: Arial, sans-serif;
-  margin-top:15px;
-  font-weight: bold;
+	width: 180px;
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+	font-size: 0.8em;
+	color: #fff;
+	text-align: center;
+	font-family: Arial, sans-serif;
+	margin-top: 15px;
+	font-weight: bold;
 }
 
 button.play-game {
-  background-color:rgb(101, 163, 226);
+	background-color: rgb(101, 163, 226);
 }
 
-button.play-game:hover {  
-  box-shadow: inset 0px 0px 0px 5px rgb(101, 163, 226);
-  background:white;
-  color:rgb(101, 163, 226);  
+button.play-game:hover {
+	box-shadow: inset 0px 0px 0px 5px rgb(101, 163, 226);
+	background: white;
+	color: rgb(101, 163, 226);
 }
 
 button.restart-game {
-  /*background-color: rgb(255, 206, 165);*/
-  background-color: #fd7d0f;
+	/*background-color: rgb(255, 206, 165);*/
+	background-color: #fd7d0f;
 }
 
-button.restart-game:hover {  
-  box-shadow: inset 0px 0px 0px 5px #fd7d0f;
-  background:white;
-  color:#fd7d0f;
+button.restart-game:hover {
+	box-shadow: inset 0px 0px 0px 5px #fd7d0f;
+	background: white;
+	color: #fd7d0f;
 }
 /*.p1, .p2, .play-game, .restart-game, .music, .sound-effects {
   position: relative;  
 }*/
-.play-game, .restart-game, .music-on, .music-off, .se-on, .se-off {
-  padding:20px;
+.play-game,
+.restart-game,
+.music-on,
+.music-off,
+.se-on,
+.se-off {
+	padding: 20px;
 }
 
-.p1, .p2, .start, .reset  {  
-  margin-bottom: 20px;
+.p1 > input.player-name,
+.p2 > input.player-name,
+.start,
+.reset {
+	margin-bottom: 20px !important;
 }
 
 input {
-  border-bottom: 1px solid black;
-  padding:15px;
+	border-bottom: 1px solid black;
+	padding: 15px;
 }

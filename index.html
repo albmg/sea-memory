@@ -18,6 +18,7 @@
                 <h2>Score :<span>0</span> Points</h2>
               </div>
             </div>
+
             <div class="players-b">
               <h2 class="player-two">Player 2</h2>
               <div class="score-player">
@@ -25,25 +26,54 @@
               </div>
             </div>
           </div>
-          <div class="board">
 
-          </div>
+          <div class="board"></div>
+
           <div class="control-panel">
-            <label class="p1">Player 1<input class="player-one-name" placeholder="Type your name"></label>
-            <label class="p2">Player 2<input class="player-two-name" placeholder="Type your name"></label>
-            <div class="start">Ready to start?<button class="play-game">Play Game</button></div>
-            <div class="reset">Try again!<button class="restart-game" href="#">Restart Game</button></div>
+            <div id="players"></div>
+
+            <!-- 
+              <label class="p1">
+                Player 1
+
+                <input class="player-name" placeholder="Type your name" />
+              </label>
+
+              <label class="p2">
+                Player 2
+
+                <input class="player-name" placeholder="Type your name" />
+              </label> 
+            -->
+            <div class="start">
+              Ready to start?
+
+              <button class="play-game">
+                Play Game
+              </button>
+            </div>
+
+            <div class="reset">
+              Try again!
+
+              <button class="restart-game" href="#">
+                Restart Game
+              </button>
+            </div>
             <!--<label class="music">Music<button class="music-on">On</button><button class="music-off">Off</button></label>-->
             <!--<label class="sound-effects">Sound Effects<button class="se-on">On</button><button class="se-off">Off</button></label>-->
           </div>
+
           <div class="timer">
             <h3>Timer</h3>
+
             <progress id="timer" value="20" max="20"></progress>
           </div>
         </section>
       </main>
       <!--<footer class=""></footer>-->
     </div>
+    <script src="./scripts/player.js"></script>
     <script src="./scripts/game.js"></script>
     <script src="./scripts/dom.js"></script>
   </body>
