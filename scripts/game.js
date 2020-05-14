@@ -1,43 +1,28 @@
-var animals = [
-    "whale",
-    "whale", 
-    "dolphin", 
-    "dolphin", 
-    "starfish", 
-    "starfish", 
-    "shark", 
-    "shark", 
-    "seal",
-    "seal", 
-    "squid", 
-    "squid", 
-    "octopus", 
-    "octopus", 
-    "crab", 
-    "crab", 
-    "seahorse", 
-    "seahorse"]
-
+function Player(name, letter) {
+  this.name = document.querySelector(name).value;
+  this.classString = `players-${letter}`
+}
 
 function Game() {
-  var self = this;
-  this.animalsShuffle = [];
+  const ANIMALS = [ "whale", "whale", "dolphin", "dolphin", "starfish", "starfish", "shark", "shark", "seal", "seal", "squid", "squid", "octopus", "octopus", "crab", "crab", "seahorse", "seahorse"];
 
   this.init = function () {
-    this.animalsShuffle = self.shuffle(animals);
-    this.printBoard();    
-  };
-
-  this.printBoard = function () {
+    this.animals = this.shuffle(ANIMALS);
     let board = document.querySelector(".board");
 
-    for (let i = 0; i < 3 * 6; i++) {
+    this.player1 = new Player(".player-one-name", 'a');
+    this.player2 = new Player(".player-two-name", 'b');
+    this.currentPlayer = this.player1;
+    document.querySelector('.players-a').classList.add('hit')
+    this.animals.forEach(animal => {
       const div = document.createElement("div");
       div.classList.add("cell");
+      div.innerText = animal;
+      div.classList.add(animal);
+      div.classList.add('cell-hidden');
+      div.addEventListener('click', this.play);
       board.appendChild(div);
-    }    
-
-    this.printCards();
+    })
   };
 
   this.shuffle = function (array) {
@@ -52,125 +37,118 @@ function Game() {
     return array;
   };
 
-  this.printCards = function() {
-    
-    for (var i = 0; i < cells.length; i++) {
-      let animal = self.animalsShuffle[i];
-      cells[i].innerText = animal;
-      cells[i].classList.add(animal);
-      /*cells[i].classList.add("coral");*/
-      cells[i].onclick = storeCards;
+  this.nextPlayer = function() {
+    if (this.currentPlayer === this.player1) {
+      this.currentPlayer = this.player2
+      document.querySelector(".players-b").classList.add("hit");
+      document.querySelector(".players-a").classList.remove("hit");
+    } else {
+      this.currentPlayer = this.player1
+      document.querySelector(".players-a").classList.add("hit");
+      document.querySelector(".players-b").classList.remove("hit");
     }
-  };  
-}
+  }
 
-const cells = document.getElementsByClassName('cell');
+  this.starTimer = function() {
+    this.initialTime = 20;
+    this.timerId = setInterval( () => {
+      document.getElementById("timer").value = this.initialTime;
+      if (this.initialTime === 0) {
+        clearInterval(this.timerId);
+      } else {
+        this.initialTime -= 1;
+      }
+    }, 1000);
 
-var players = ["p1", "p2"];
-var currentPlayer = players[0];
+    return this.timerId;
+  }
 
-function nextPlayer(current) {
-  let index = players.indexOf(current) === -1 ? 0 : players.indexOf(current) + 1;
+  this.stopTimer = function() {
+    clearInterval(this.timerId)
+  }
 
-  currentPlayer = players[index] ? players[index] : players[0];
-}
+  this.play = e => {
+    let card = e.target
+    card.classList.add("clicked");
+    card.onclick = "";
+    // this.starTimer()
+    var selectedCards = document.getElementsByClassName("clicked");
+    if (selectedCards.length === 2) {
+      if (selectedCards[0].innerText === selectedCards[1].innerText) {
+        selectedCards[0].classList.add('hit')
+        selectedCards[0].classList.add(this.currentPlayer.classString)
+        selectedCards[1].classList.add('hit')
+        selectedCards[1].classList.add(this.currentPlayer.classString)
 
-
-function timer () {
-  var initialTime = 20;
-  var timerId = setInterval(function () {
-    document.getElementById("timer").value = initialTime;    
-    if (initialTime <= 0) {
-      clearInterval(timerId);
+        selectedCards[0].classList.remove('cell-hidden')
+        selectedCards[1].classList.remove('cell-hidden')
+        selectedCards[0].classList.remove('clicked')
+        selectedCards[0].classList.remove('clicked')
+      } else {
+        selectedCards[0].classList.remove('clicked')
+        selectedCards[0].classList.remove('clicked')
+        this.nextPlayer()
+      }
     }
-    initialTime -= 1;
-    console.log(initialTime)
-  }, 1000);
-
-  return timerId;
+  }
 }
+
 
 
 var checkCards = [];
 
-function storeCards (e) {      
-  //console.log(e);  
-  selectPlayers();
-  e.target.classList.add("clicked");
-  e.target.onclick = "";
-  var timerId = null;
-  timerId = timer();
-  
-  var selectedCard = document.getElementsByClassName("clicked");  
+function storeCards (e) {
+
 
   switch (checkCards.length){
-    case 0:      
-      checkCards.push(e.target.innerText);            
+    case 0:
+      checkCards.push(e.target.innerText);
       break;
-    case 1:      
-      checkCards.push(e.target.innerText);      
+    case 1:
+      checkCards.push(e.target.innerText);
 
       for (var i = 0; i < selectedCard.length; i++) {
-        if (checkCards[0] === checkCards[1]) {  
+        if (checkCards[0] === checkCards[1]) {
           if (currentPlayer === players[1]) {
-            //console.log("Deberías cambiar de color");
             selectedCard[i].classList.add("hit-player-two");
-            checkCards = [];          
+            checkCards = [];
           } else {
-            selectedCard[i].classList.add("hit");                   
-            checkCards = [];            
-          }                             
-        } 
-        if (checkCards[0] !== checkCards[1] && 
+            selectedCard[i].classList.add("hit");
+            checkCards = [];
+          }
+        }
+        if (checkCards[0] !== checkCards[1] &&
           !selectedCard[i].classList.contains("hit") &&
           !selectedCard[i].classList.contains("hit-player-two"))
-        {           
+        {
           selectedCard[i].classList.add("fail");
           clearInterval(timerId);
-          timerId = timer();                                  
-        }                
-      }      
+          timerId = timer();
+        }
+      }
       break;
     case 2:
       checkCards = [];
       var fails = document.querySelectorAll(".cell");
 
-      for (var i = 0; i < fails.length; i++) {        
+      for (var i = 0; i < fails.length; i++) {
         fails[i].classList.remove("fail");
-        fails[i].classList.remove("clicked");        
-        fails[i].onclick = storeCards;              
+        fails[i].classList.remove("clicked");
+        fails[i].onclick = storeCards;
       }
 
       nextPlayer(currentPlayer);
       alert("next player");
       clearInterval(timerId);
-      timerId = timer();            
+      timerId = timer();
 
-      cells.className = "";      
+      cells.className = "";
       break;
-    default:      
-  }  
-}
-
-function selectPlayers () {
-  //var pl1 = document.querySelector(".player-one");
-  //var p1 = pl1.innerText;
-  //var pl2 = document.querySelector(".player-two");
-  //var p2 = pl2.innerText;
-  var pa = document.querySelector(".players-a");
-  var pb = document.querySelector(".players-b");
-  if (currentPlayer === players[1]) {
-    //console.log(p2 + " es tu turno");      
-    pb.classList.add("hit-player-two");
-    pa.classList.remove("hit");
-  }
-  else {
-    //console.log(p1 + " es tu turno");
-    pa.classList.add("hit");
-    pb.classList.remove("hit-player-two")
-
+    default:
   }
 }
+
+
 
 var playerOneName = document.querySelectorAll(".player-one-name");
 var playerTwoName = document.querySelectorAll(".player-two-name");
@@ -185,7 +163,7 @@ function selectNick() {
     if (e.key === 'Enter') {
       playerTwoNick[0].innerText = playerTwoName[0].value;
     }
-  }) 
+  })
 }
 
 /*function blockNick () {
@@ -199,27 +177,22 @@ function changeBackground () {
   h1text[0].innerText = "";
 }
 
-function blockStartGame () {
-  playGame.removeEventListener("click", startGame);
-}
-
 function gameReset () {
   window.location.reload(true);
 }
 
-var playGame = document.querySelector(".play-game")
-var resetGame = document.querySelector(".restart-game");
-playGame.addEventListener("click", startGame);
+
+document.querySelector(".play-game").addEventListener("click", startGame);
 /*playGame.removeEventListener("click", iniciarPartida);*/
-resetGame.addEventListener("click", this.gameReset);
+document.querySelector(".restart-game").addEventListener("click", this.gameReset);
 
 
 selectNick();
 
-function startGame () {  
+function startGame () {
   var game = new Game();
+  document.querySelector('.start-panel').style.display = 'none'
   game.init();
   changeBackground();
   //blockNick();
-  blockStartGame();
 }
