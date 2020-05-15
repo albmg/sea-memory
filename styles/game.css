@@ -8,11 +8,16 @@
   src: url(/assets/fonts/DK\ Jambo.otf);
 }
 
+@font-face {
+  font-family: cheri;
+  src: url(/assets/fonts/CHERI___.TTF);
+}
+
 html, body, div, input, button {
   margin:0;
   padding:0;
   border:0;
-  font-family: jambo;
+  font-family: cheri;
 }
 #site-main {
   width: 1040px;
@@ -21,6 +26,7 @@ html, body, div, input, button {
 .boardgame {
   margin: 0 auto;
   max-width: 80%;
+  background-color: rgba(211, 211, 211, 0.2);
 }
 
 .scores {
@@ -91,19 +97,15 @@ html, body, div, input, button {
   color:transparent;
 }
 
-.cell:hover {
-  /*border:1px solid black;*/
-  box-shadow: inset 0px 0px 0px 5px rgb(114, 225, 253);
-  /*visibility: visible;*/
+.cell:hover {  
+  box-shadow: inset 0px 0px 0px 5px rgb(114, 225, 253);  
 }
-.cell-hidden {
-  /*background: rgba(255,255,255,0.9) !important;*/
-  /*background: url(/assets/images/cardBack.png) !important;*/
-  background: url(/assets/images/coral.png) !important;
+
+.cell-hidden {  
+  background: url(/assets/images/coralBack.png) !important;
   background-repeat: no-repeat;
   background-position-x: center;
-  background-position-y: center;
-   
+  background-position-y: center;   
 }
 
 /* progress bar */
@@ -128,29 +130,27 @@ html, body, div, input, button {
 }
 
 .players-a.hit {
-  background-color:rgb(166, 255, 165);
-  transition-delay: 1s;
-  /*transition:linear 0.2s;*/
-}
-
-.players-b.hit {
-  background-color:rgb(255, 206, 165);
-  /*transition:linear 0.2s;*/
-  transition-delay: 1s;
-  
-}
-
-.fail {
-  background-color:rgba(249, 0, 0, 0.38);
+  /*background-color:rgb(166, 255, 165);*/
+  /*background-color:rgb(165, 255, 197);*/
+  background-color:rgb(195, 216, 203);
   /*transition-delay: 1s;*/
   transition:linear 0.2s;
 }
 
-/*** CSS CARDS ***/
+.players-b.hit {
+  /*background-color:rgb(255, 206, 165);*/
+  background-color:rgb(156, 211, 236);
+  transition:linear 0.2s
+  /*transition-delay: 1s;*/
+  
+}
 
-/*.coral {
-  /*background-image: url(../assets/images/coral.png);
-}*/
+.fail {
+  background-color:rgba(249, 0, 0, 0.38);  
+  transition:linear 0.2s;
+}
+
+/*** CSS CARDS ***/
 
 .seahorse {
   background-image: url(../assets/images/seahorse.png);
@@ -196,7 +196,6 @@ html, body, div, input, button {
   display: none;
 }
 
-/* Control panel */
 
 .start-panel {
   position: absolute;
@@ -205,15 +204,15 @@ html, body, div, input, button {
   display: flex;
   flex-direction: column;
   /*top: 200px;*/
-  top:250px;
-  left:36%;
+  top:300px;
+  left:40%;
   width:350px;
-  padding: 50px;
+  padding: 25px;
   font-size:1.5em;
 }
 .start-panel > div > label {
   margin-right: 30px;
-  width: 90px;
+  width: 100px;
   display: inline-block;
 }
 
@@ -230,17 +229,19 @@ html, body, div, input, button {
 }
 
 button.play-game {
-  background-color:rgb(101, 163, 226);
+  /*background-color:rgb(101, 163, 226);*/
+  background-color:rgba(82, 101, 141, 0.8);
+  border:1px solid white;
+  cursor:pointer;  
 }
 
 button.play-game:hover {
-  box-shadow: inset 0px 0px 0px 5px rgb(101, 163, 226);
+  box-shadow: inset 0px 0px 0px 5px rgba(82, 101, 141, 0.8);
   background:white;
-  color:rgb(101, 163, 226);
+  color:rgba(82, 101, 141, 0.8);  
 }
 
-button.restart-game {
-  /*background-color: rgb(255, 206, 165);*/
+button.restart-game {  
   background-color: #fd7d0f;
 }
 
@@ -249,9 +250,7 @@ button.restart-game:hover {
   background:white;
   color:#fd7d0f;
 }
-/*.p1, .p2, .play-game, .restart-game, .music, .sound-effects {
-  position: relative;
-}*/
+
 .play-game, .restart-game, .music-on, .music-off, .se-on, .se-off {
   padding:20px;
 }
@@ -263,4 +262,8 @@ button.restart-game:hover {
 input {
   border-bottom: 1px solid black;
   padding:15px;
+}
+input[type="text"]
+{
+    font-size:16px;
 }

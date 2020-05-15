@@ -6,6 +6,8 @@ function Player(name, letter) {
 function Game() {
   const ANIMALS = [ "whale", "whale", "dolphin", "dolphin", "starfish", "starfish", "shark", "shark", "seal", "seal", "squid", "squid", "octopus", "octopus", "crab", "crab", "seahorse", "seahorse"];
 
+  this.selectedCards = [];
+
   this.init = function () {
     this.animals = this.shuffle(ANIMALS);
     let board = document.querySelector(".board");
@@ -38,6 +40,8 @@ function Game() {
   };
 
   this.nextPlayer = function() {
+    this.selectedCards = [];
+
     if (this.currentPlayer === this.player1) {
       this.currentPlayer = this.player2
       document.querySelector(".players-b").classList.add("hit");
@@ -69,37 +73,36 @@ function Game() {
 
   this.play = e => {    
     let card = e.target
-    //card.classList.toggle("cell-hidden");
-    card.classList.remove("cell-hidden");
-    t = setTimeout(() => {
-      card.classList.add("cell-hidden");
-    }, 2000);
-    card.classList.add("clicked");    
-    card.onclick = "";    
-    //this.starTimer()
-    var selectedCards = document.getElementsByClassName("clicked");
     
-    //console.log(selectedCards.length)       
-    if (selectedCards.length === 2) {
-      if (selectedCards[0].innerText === selectedCards[1].innerText) { 
-        //clearTimeout(t);      
-        selectedCards[0].classList.add('hit')
-        selectedCards[0].classList.add(this.currentPlayer.classString)
-        //clearTimeout(t);
-        selectedCards[1].classList.add('hit')
-        selectedCards[1].classList.add(this.currentPlayer.classString)
-        //clearTimeout(t);
+    card.classList.remove("cell-hidden");
 
-        selectedCards[0].classList.remove('cell-hidden')
-        selectedCards[1].classList.remove('cell-hidden')
-        selectedCards[0].classList.remove('clicked')
-        selectedCards[0].classList.remove('clicked')
-        clearTimeout(t);
-                
+    this.selectedCards.push(card);
+        
+    card.onclick = "";    
+    
+    
+        
+    if (this.selectedCards.length === 2) {
+
+      if (this.selectedCards[0].innerText === this.selectedCards[1].innerText) {             
+
+        this.selectedCards[0].classList.add('hit')
+        this.selectedCards[0].classList.add(this.currentPlayer.classString)
+
+        this.selectedCards[1].classList.add('hit')
+        this.selectedCards[1].classList.add(this.currentPlayer.classString)        
+
+        this.selectedCards[0].classList.remove('cell-hidden')
+        this.selectedCards[1].classList.remove('cell-hidden')        
+              
+        this.selectedCards = [];        
       } else {                  
-        selectedCards[0].classList.remove('clicked')
-        selectedCards[0].classList.remove('clicked')        
-        this.nextPlayer()
+        
+        setTimeout(() => {
+          this.selectedCards[0].classList.add("cell-hidden");
+          this.selectedCards[1].classList.add("cell-hidden");
+          this.nextPlayer();
+        }, 500);
       }
     }  
   }
