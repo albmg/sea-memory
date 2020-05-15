@@ -61,6 +61,8 @@ function Game() {
   };
 
   this.nextPlayer = function () {
+    this.selectedCards = [];
+
     if (this.currentPlayer === this.player1) {
       this.currentPlayer = this.player2;
       document.querySelector(".players-b").classList.add("hit");
@@ -97,9 +99,9 @@ function Game() {
     // card.classList.add("clicked");
     this.selectedCards.push(card);
 
-    t = setTimeout(() => {
-      card.classList.add("cell-hidden");
-    }, 2000);
+    // t = setTimeout(() => {
+    //   card.classList.add("cell-hidden");
+    // }, 2000);
 
     card.onclick = "";
     //this.starTimer()
@@ -109,6 +111,8 @@ function Game() {
 
     //console.log(selectedCards.length)
     if (this.selectedCards.length === 2) {
+      // clearTimeout(t);
+
       if (this.selectedCards[0].innerText === this.selectedCards[1].innerText) {
         //clearTimeout(t);
         this.selectedCards[0].classList.add("hit");
@@ -125,16 +129,12 @@ function Game() {
         console.log("Selected cards", this.selectedCards);
 
         this.selectedCards = [];
-
-        clearTimeout(t);
       } else {
-        // selectedCards[0].classList.remove("clicked");
-        // selectedCards[1].classList.remove("clicked");
-        console.log("Selected cards", this.selectedCards);
-
-        this.selectedCards = [];
-
-        this.nextPlayer();
+        setTimeout(() => {
+          this.selectedCards[0].classList.add("cell-hidden");
+          this.selectedCards[1].classList.add("cell-hidden");
+          this.nextPlayer();
+        }, 500);
       }
     }
   };
