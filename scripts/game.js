@@ -65,32 +65,43 @@ function Game() {
 
   this.stopTimer = function() {
     clearInterval(this.timerId)
-  }
+  }  
 
-  this.play = e => {
+  this.play = e => {    
     let card = e.target
+    //card.classList.toggle("cell-hidden");
+    card.classList.remove("cell-hidden");
+    t = setTimeout(() => {
+      card.classList.add("cell-hidden");
+    }, 2000);
     card.classList.add("clicked");    
     card.onclick = "";    
-    // this.starTimer()
-    var selectedCards = document.getElementsByClassName("clicked");       
+    //this.starTimer()
+    var selectedCards = document.getElementsByClassName("clicked");
+    
+    //console.log(selectedCards.length)       
     if (selectedCards.length === 2) {
-      if (selectedCards[0].innerText === selectedCards[1].innerText) {        
+      if (selectedCards[0].innerText === selectedCards[1].innerText) { 
+        //clearTimeout(t);      
         selectedCards[0].classList.add('hit')
         selectedCards[0].classList.add(this.currentPlayer.classString)
+        //clearTimeout(t);
         selectedCards[1].classList.add('hit')
         selectedCards[1].classList.add(this.currentPlayer.classString)
+        //clearTimeout(t);
 
         selectedCards[0].classList.remove('cell-hidden')
         selectedCards[1].classList.remove('cell-hidden')
         selectedCards[0].classList.remove('clicked')
         selectedCards[0].classList.remove('clicked')
-      } else {  
-        console.log("diferentes");         
+        clearTimeout(t);
+                
+      } else {                  
         selectedCards[0].classList.remove('clicked')
-        selectedCards[0].classList.remove('clicked')
+        selectedCards[0].classList.remove('clicked')        
         this.nextPlayer()
       }
-    }    
+    }  
   }
 }
 
@@ -174,7 +185,7 @@ function selectNick() {
 function changeBackground () {
   var backg = document.getElementsByClassName("board");
   var h1text = document.getElementsByTagName("h1");
-  backg[0].style.backgroundColor = "white";
+  backg[0].style.background = "none";
   //h1text[0].innerText = "";
 }
 
