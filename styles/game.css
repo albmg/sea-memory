@@ -56,7 +56,8 @@ html, body, div, input, button {
   justify-content: center;
   margin-top: 20px;
   height: 520px;
-  background-color:hsl(210, 47%, 59%);
+  /*background-color:hsl(210, 47%, 59%);*/
+  background:url(/assets/images/backGame.png);
   border-radius:2px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   padding: 10px;
@@ -74,7 +75,7 @@ html, body, div, input, button {
 }
 
 .cell {
-  width: 14%;
+  width: 15%;
   padding: 5px;
   height: 150px;
   border:2px solid grey /* rgb(48, 28, 28)*/;
@@ -95,7 +96,12 @@ html, body, div, input, button {
   /*visibility: visible;*/
 }
 .cell-hidden {
-  background: rgba(255,255,255,0.9) !important;
+  /*background: rgba(255,255,255,0.9) !important;*/
+  background: url(/assets/images/cardBack.png) !important;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+   
 }
 
 /* progress bar */
@@ -121,13 +127,15 @@ html, body, div, input, button {
 
 .players-a.hit {
   background-color:rgb(166, 255, 165);
-  /*transition-delay: 1s;*/
-  transition:linear 0.2s;
+  transition-delay: 1s;
+  /*transition:linear 0.2s;*/
 }
 
 .players-b.hit {
   background-color:rgb(255, 206, 165);
-  transition:linear 0.2s;
+  /*transition:linear 0.2s;*/
+  transition-delay: 1s;
+  
 }
 
 .fail {
@@ -178,10 +186,7 @@ html, body, div, input, button {
 }
 .seahorse, .octopus, .shark, .whale, .squid, .dolphin, .starfish, .seal, .crab, .aqua {
   background-repeat: no-repeat;
-  background-position-y: center;
-  background-position-x: center;
-  /*color: transparent;*/
-  /*transform: rotateY(45);*/
+  background-position: center center;    
 }
 
 /* RESET PANEL */
@@ -193,11 +198,13 @@ html, body, div, input, button {
 
 .start-panel {
   position: absolute;
-  background-color: rgba(255,255,255,0.9);
+  background-color: rgba(255,255,255,0.2);
+  border-radius:5px;
   display: flex;
   flex-direction: column;
-  top: 200px;
-  left:32%;
+  /*top: 200px;*/
+  top:250px;
+  left:36%;
   width:350px;
   padding: 50px;
   font-size:1.5em;

@@ -69,12 +69,12 @@ function Game() {
 
   this.play = e => {
     let card = e.target
-    card.classList.add("clicked");
-    card.onclick = "";
+    card.classList.add("clicked");    
+    card.onclick = "";    
     // this.starTimer()
-    var selectedCards = document.getElementsByClassName("clicked");
+    var selectedCards = document.getElementsByClassName("clicked");       
     if (selectedCards.length === 2) {
-      if (selectedCards[0].innerText === selectedCards[1].innerText) {
+      if (selectedCards[0].innerText === selectedCards[1].innerText) {        
         selectedCards[0].classList.add('hit')
         selectedCards[0].classList.add(this.currentPlayer.classString)
         selectedCards[1].classList.add('hit')
@@ -84,18 +84,19 @@ function Game() {
         selectedCards[1].classList.remove('cell-hidden')
         selectedCards[0].classList.remove('clicked')
         selectedCards[0].classList.remove('clicked')
-      } else {
+      } else {  
+        console.log("diferentes");         
         selectedCards[0].classList.remove('clicked')
         selectedCards[0].classList.remove('clicked')
         this.nextPlayer()
       }
-    }
+    }    
   }
 }
 
 
 
-var checkCards = [];
+/*var checkCards = [];
 
 function storeCards (e) {
 
@@ -146,7 +147,7 @@ function storeCards (e) {
       break;
     default:
   }
-}
+}*/
 
 
 
@@ -174,7 +175,7 @@ function changeBackground () {
   var backg = document.getElementsByClassName("board");
   var h1text = document.getElementsByTagName("h1");
   backg[0].style.backgroundColor = "white";
-  h1text[0].innerText = "";
+  //h1text[0].innerText = "";
 }
 
 function gameReset () {
