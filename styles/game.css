@@ -98,7 +98,7 @@ html, body, div, input, button {
 }
 
 .cell:hover {  
-  box-shadow: inset 0px 0px 0px 5px rgb(114, 225, 253);  
+  box-shadow: inset 0px 0px 0px 5px rgb(114, 225, 253);    
 }
 
 .cell-hidden {  
@@ -199,7 +199,7 @@ html, body, div, input, button {
 
 .start-panel {
   position: absolute;
-  background-color: rgba(255,255,255,0.2);
+  /*background-color: rgba(255,255,255,0.2);*/
   border-radius:5px;
   display: flex;
   flex-direction: column;
@@ -214,6 +214,7 @@ html, body, div, input, button {
   margin-right: 30px;
   width: 100px;
   display: inline-block;
+  color:white;
 }
 
 .play-game {
@@ -236,9 +237,11 @@ button.play-game {
 }
 
 button.play-game:hover {
-  box-shadow: inset 0px 0px 0px 5px rgba(82, 101, 141, 0.8);
-  background:white;
-  color:rgba(82, 101, 141, 0.8);  
+  /*box-shadow: inset 0px 0px 0px 5px rgba(82, 101, 141, 0.8);*/
+  /*background:white;*/
+  /*color:rgba(82, 101, 141, 0.8);  */
+  /*box-shadow: inset 0px 0px 0px 15px red)*/
+  font-size:20px;
 }
 
 button.restart-game {  
@@ -262,8 +265,12 @@ button.restart-game:hover {
 input {
   border-bottom: 1px solid black;
   padding:15px;
+  border-radius:5px;
 }
 input[type="text"]
 {
     font-size:16px;
+}
+span.score-one, span.score-two {
+  font-size: 40px;
 }
