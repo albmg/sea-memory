@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: cheri;
-  src: url(/assets/fonts/CHERI___.TTF);
+  src: url(../assets/fonts/CHERI___.TTF);
 }
 
 html, body, div, input, button {
