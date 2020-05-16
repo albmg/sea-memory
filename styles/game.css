@@ -66,15 +66,7 @@ html, body, div, input, button {
   padding: 10px;
 }
 
-#game-title {
-  position: absolute;
-  top: 150px;
-  text-align: center;
-  color: white;
-  font-size: 4em;
-  font-weight: bold;
-  font-family: goodMorning;
-  text-transform: uppercase;
+#game-title {  
   visibility: hidden;
 }
 
