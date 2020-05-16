@@ -76,15 +76,11 @@ function Game() {
 
   this.play = e => {    
     let card = e.target
-    
     card.classList.remove("cell-hidden");
+    card.onclick = "";       
 
-    this.selectedCards.push(card);
-        
-    card.onclick = "";    
-    
-    
-        
+    this.selectedCards.push(card);      
+            
     if (this.selectedCards.length === 2) {
 
       if (this.selectedCards[0].innerText === this.selectedCards[1].innerText) {             
@@ -103,12 +99,14 @@ function Game() {
           this.scoreplayer2++;
           document.getElementsByClassName("score-two")[0].innerText = this.scoreplayer2 * this.cardsValue;
           console.log("score player 2" + this.scoreplayer2)
-        }
+        }  
 
         this.selectedCards[0].classList.remove('cell-hidden')
-        this.selectedCards[1].classList.remove('cell-hidden')        
-                
-        this.selectedCards = [];        
+        this.selectedCards[1].classList.remove('cell-hidden')         
+
+        this.selectedCards = [];
+
+        
       } else {                  
         
         setTimeout(() => {
