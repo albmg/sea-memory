@@ -9,7 +9,7 @@ function Game() {
   this.selectedCards = [];
   this.scoreplayer1 = 0;
   this.scoreplayer2 = 0;
-  this.cardsValue = 10;
+  this.cardsValue = 10;  
 
   this.init = function () {
     this.animals = this.shuffle(ANIMALS);
@@ -93,19 +93,18 @@ function Game() {
         
         if (this.selectedCards[0].classList.contains('players-a')) {
           this.scoreplayer1++;
-          document.getElementsByClassName("score-one")[0].innerText = this.scoreplayer1 * this.cardsValue;
-          console.log("score player 1" + this.scoreplayer1)
+          document.getElementsByClassName("score-one")[0].innerText = this.scoreplayer1 * this.cardsValue;          
         } else {
           this.scoreplayer2++;
-          document.getElementsByClassName("score-two")[0].innerText = this.scoreplayer2 * this.cardsValue;
-          console.log("score player 2" + this.scoreplayer2)
-        }  
+          document.getElementsByClassName("score-two")[0].innerText = this.scoreplayer2 * this.cardsValue;          
+        }          
 
         this.selectedCards[0].classList.remove('cell-hidden')
         this.selectedCards[1].classList.remove('cell-hidden')         
 
         this.selectedCards = [];
-
+        
+        console.log(this.selectedCards)
         
       } else {                  
         
@@ -115,8 +114,8 @@ function Game() {
           this.nextPlayer();
         }, 500);
       }
-    }  
-  }; 
+    }
+  };   
 }
 
 
