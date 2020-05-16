@@ -1,37 +1,34 @@
-## Welcome to GitHub Pages
+# Sea Memory
 
-You can use the [editor on GitHub](https://github.com/albmg/sea-memory/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+A "project pet" game based on a memorama, you have to find matching cards that are hidden and with a random position.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Demo
 
-### Markdown
+Link to the demo: https://albmg.github.io/sea-memory/
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Game Screenshots
 
-```markdown
-Syntax highlighted code block
+<img src="./assets/images/dashboard.png" width="200px">
+<img src="./assets/images/dashboard01.png" width="200px">
+<img src="./assets/images/dashboard-responsive.png" width="200px">
 
-# Header 1
-## Header 2
-### Header 3
+## How To Play
 
-- Bulleted
-- List
+- Select cards with mouse click and turn them until you find all the pairs. On your phone/tablet use your fingers.
+- Each pair of turned cards adds 10 points to your scoreboard.
+- The player who flips the most cards wins.
 
-1. Numbered
-2. List
+## Features
 
-**Bold** and _Italic_ and `Code` text
+- Turn-based game for two players.
+- Shift change when two cards do not match.
 
-[Link](url) and ![Image](src)
-```
+### To do
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+- Add sound effects.
+- Add animation when fliping cards.
+- Add a "Did you know" section.
 
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/albmg/sea-memory/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## Tools
+- Visual Studio. 
+- Pixlr.
