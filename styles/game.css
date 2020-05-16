@@ -63,7 +63,7 @@ html, body, div, input, button {
   margin-top: 20px;
   height: 520px;
   /*background-color:hsl(210, 47%, 59%);*/
-  background:url(/assets/images/backGame.png);
+  background:url(../assets/images/backGame.png);
   border-radius:2px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   padding: 10px;
@@ -102,7 +102,7 @@ html, body, div, input, button {
 }
 
 .cell-hidden {  
-  background: url(/assets/images/coralBack.png) !important;
+  background: url(../assets/images/coralBack.png) !important;
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: center;   
